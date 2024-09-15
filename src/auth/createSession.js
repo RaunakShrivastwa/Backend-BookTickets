@@ -13,7 +13,7 @@ class CreateSession {
             if (!user || (user.userPassword != req.body.userPassword)) {
                 return res.status(403).json({ Message: 'Invalide Information' })
             }
-            const token = JwtToken.sign(user.toJSON(), 'ecomDev01@112', { expiresIn: 10000 });
+            const token = JwtToken.sign(user.toJSON(), process.env.SCRETE_KEY , { expiresIn: 10000 });
             return res.status(200).json(token);
         }
         catch (err) {

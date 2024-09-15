@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
 dotenv.config();
-mongoose.connect('mongodb+srv://canTech:220831@cantechnology.v9rfpa6.mongodb.net/E-com');
+mongoose.connect(process.env.DB_URL);
 const db = mongoose.connection;
 
 db.on('error', (err) => {

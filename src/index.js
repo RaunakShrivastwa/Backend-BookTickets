@@ -16,7 +16,7 @@ if (cluster.isPrimary) {
 } else {
 
     dotenv.config();
-    const PORT = process.env.PORT;
+    const PORT = 5000 || process.env.PORT;
     const app = expres();
     app.get('/hello', (req, res) => {
         return res.json({message:'hello Shubham'})

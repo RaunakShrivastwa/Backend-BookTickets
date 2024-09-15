@@ -14,7 +14,7 @@ const verifyToken = async (req, res, next) => {
   const redisData = await redisClient.get(token);
   if (redisData) return res.status(403).json({ Message: 'Session Closed, !!!! Create New Session' })
   try {
-    const decoded = jwt.verify(token, 'ecomDev01@112');
+    const decoded = jwt.verify(token, process.env.SCRETE_KEY);
     const user = await User.findById(decoded._id);
     if (!user) {
       return res.status(404).json({ message: 'User not found.' });
